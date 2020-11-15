@@ -1,5 +1,6 @@
 package com.aws.codestar.projecttemplates.controller;
 
+import com.aws.codestar.projecttemplates.Model.Word;
 import com.aws.codestar.projecttemplates.Service.AppService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class HelloWorldController {
     private AppService appService;
 
     @GetMapping("/")
-    public String getRandomEngWord() throws IOException {
+    public Word getRandomEngWord() throws IOException {
         return appService.returnRandomEnglishWord();
     }
 }

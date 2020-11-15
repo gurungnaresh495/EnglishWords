@@ -1,5 +1,6 @@
 package com.aws.codestar.projecttemplates.Service;
 
+import com.aws.codestar.projecttemplates.Model.Word;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
@@ -18,7 +19,7 @@ public class AppServiceImpl implements AppService{
     private ResourceLoader resourceLoader;
 
     @Override
-    public String returnRandomEnglishWord() throws IOException {
+    public Word returnRandomEnglishWord() throws IOException {
 
         //lets count the lines
         Resource resource = resourceLoader.getResource("classpath:EnglishWords.txt");
@@ -42,7 +43,9 @@ public class AppServiceImpl implements AppService{
             e.printStackTrace();
         }
         reader.close();
-        return word;
+        Word aWord = new Word();
+        aWord.setWord(word);
+        return aWord;
 
     }
 }
